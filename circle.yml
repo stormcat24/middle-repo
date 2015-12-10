@@ -1,0 +1,19 @@
+machine:
+  timezone: Asia/Tokyo
+
+  services:
+    - docker
+
+dependencies:
+  override:
+    - ./dockerci.sh build
+
+test:
+  override:
+    - echo test
+
+deployment:
+  push-docker:
+    branch: master
+    commands:
+      - ./dockerci.sh push
